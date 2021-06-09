@@ -1,0 +1,49 @@
+<center>
+    <ul>
+        <li><button class="open-button" onclick="openForm1()">Enter your details</button></li>
+      </ul>
+    <h2><i>Welcome <%=user%></i></h2>
+    
+    <div class="container">
+        <%if(details.length>0){%>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+                <th style="text-align:center">S.No</th>
+                <th style="text-align:center">Name</th>
+                <th style="text-align:center">Contact no.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% details.forEach(function(x,i){ %>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td><%=x.name%></td>
+                        <td><%=x.phone%></td>
+                    </tr>
+                <%})%>
+                </tbody>
+        </table>
+        <%}%>
+        </div>
+<div class="form-popup" id="myForm1">
+    <form action="/users/details" class="form-container" method="post">
+      <label for="unm"><b>Name:</b></label>
+      <input type="text" placeholder="Enter name" name="name" required>
+      <label for="unm"><b>Contact no.:</b></label>
+      <input type="text" placeholder="Enter contact no." name="phone" required>
+      <input type="hidden" name="email" value="<%=email%>">
+      <button type="submit" class="btn">Submit</button>
+      <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
+    </form>
+  </div>
+  </center>
+  <script>
+    function openForm1() {
+      document.getElementById("myForm1").style.display = "block";
+    }
+    
+    function closeForm1() {
+      document.getElementById("myForm1").style.display = "none";
+    }
+    </script>
